@@ -1,0 +1,14 @@
+FROM node:alpine
+
+# All react code base will be in app folder
+WORKDIR '/app'
+
+# Copy package.json and download packages
+COPY package.json . 
+RUN npm install
+
+# Copy rest of the code base
+COPY . .
+
+# Start react dev server
+CMD ["npm", "run", "start"]
